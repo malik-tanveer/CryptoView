@@ -29,7 +29,7 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-          <Link to="/home" className="nav-link">Home</Link>
+          <Link to="/dashboard" className="nav-link">Home</Link>
           <Link to="/about" className="nav-link">About</Link>
           <Link to="/cryptos" className="nav-link">Cryptocurrencies</Link>
           <Link to="/trending" className="nav-link">Trending</Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
 
         {/* Links */}
         <div className="flex flex-col gap-5 p-5 text-gray-700 font-medium">
-          <Link to="/home" onClick={() => setMenuOpen(false)} className="flex gap-3"><Home size={18}/> Home</Link>
+          <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="flex gap-3"><Home size={18}/> Home</Link>
           <Link to="/about" onClick={() => setMenuOpen(false)} className="flex gap-3"><Info size={18}/> About</Link>
           <Link to="/cryptos" onClick={() => setMenuOpen(false)} className="flex gap-3"><BarChart3 size={18}/> Cryptos</Link>
           <Link to="/trending" onClick={() => setMenuOpen(false)} className="flex gap-3"><TrendingUp size={18}/> Trending</Link>

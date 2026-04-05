@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Left: Logo + Description */}
           <div className="flex flex-col gap-4 max-w-sm">
             <img src="/logo2.png" alt="logo" className="w-16 h-16" />
-             <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-sm">
               Stay updated with real-time cryptocurrency prices, market trends, and in-depth charts analysis. CryptoView helps you track top coins. All your crypto insights in one place.
             </p>
           </div>
@@ -22,7 +22,7 @@ const Footer = () => {
 
             {/* Nav Links 2 lines */}
             <div className="grid grid-cols-2 gap-2 text-gray-700 font-medium">
-              <Link to="/home" className="hover:text-gray-900">Home</Link>
+              <Link to="/dashboard" className="hover:text-gray-900">Home</Link>
               <Link to="/trending" className="hover:text-gray-900">Trending</Link>
               <Link to="/about" className="hover:text-gray-900">About</Link>
               <Link to="/cryptos" className="hover:text-gray-900">Cryptocurrencies</Link>
@@ -30,21 +30,21 @@ const Footer = () => {
               <Link to="/help" className="hover:text-gray-900">Help</Link>
             </div>
 
-            </div>
-            {/* Contact / Connect Section */}
-            <div className="mt-4 text-gray-600 text-sm flex flex-col gap-2">
-              <span>Contact us at:</span>
-              <a href="mailto:mtanveerdev.33@gmail.com" className="hover:text-gray-900">
-                mtanveerdev.33@gmail.com
+          </div>
+          {/* Contact / Connect Section */}
+          <div className="mt-4 text-gray-600 text-sm flex flex-col gap-2">
+            <span>Contact us at:</span>
+            <a href="mailto:mtanveerdev.33@gmail.com" className="hover:text-gray-900">
+              mtanveerdev.33@gmail.com
+            </a>
+            <div className="flex gap-4 mt-1">
+              <a href="https://github.com/malik-tanveer" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
+                <FaGithub size={25} />
               </a>
-              <div className="flex gap-4 mt-1">
-                <a href="https://github.com/malik-tanveer" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
-                  <FaGithub size={25} />
-                </a>
-                <a href="https://www.linkedin.com/in/malik-tanveer-8bbaa13b2" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
-                  <FaLinkedin size={25} />
-                </a>
-              </div>
+              <a href="https://www.linkedin.com/in/malik-tanveer-8bbaa13b2" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
+                <FaLinkedin size={25} />
+              </a>
+            </div>
 
           </div>
 
