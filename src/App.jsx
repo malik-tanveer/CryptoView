@@ -8,7 +8,7 @@ import Cryptos from "./pages/Cryptos";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Start from "./pages/Start";
-
+import CoinDetail from "./pages/CoinDetail";
 import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -40,6 +40,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+  path="/coin/:id"
+  element={
+    <ProtectedRoute>
+      <CoinDetail />
+    </ProtectedRoute>
+  }
+/>
         <Route
           path="/about"
           element={

@@ -19,7 +19,7 @@ const Navbar = () => {
   const { currentUser, logout } = useAuth();
 
   return (
-    <nav className="w-full bg-white border-b shadow-sm relative">
+    <nav className="w-full bg-white border-b shadow-sm fixed top-0">
       {/* TOP BAR */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
         {/* Logo */}

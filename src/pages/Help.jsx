@@ -128,7 +128,7 @@ const faqCategories = [
       },
       {
         q: "How do I delete my account?",
-        a: "To delete your CryptoView account, please contact us at support@cryptoview.com with your registered email address and a request to delete your account. We will process the request and permanently remove your account and associated data within 48 hours.",
+        a: "To delete your CryptoView account, please contact us at mtanveerdev.33@gmail.com with your registered email address and a request to delete your account. We will process the request and permanently remove your account and associated data within 48 hours.",
       },
     ],
   },
@@ -201,9 +201,6 @@ const Help = () => {
   return (
     <div className="bg-white text-gray-900 font-sans">
 
-      {/* ════════════════════════════════════════
-          HERO
-      ════════════════════════════════════════ */}
       <section className="bg-blue-900 py-20 px-6 text-center">
         <p className="text-xs font-bold text-blue-300 uppercase tracking-widest mb-4">Help & Support</p>
         <h1 className="text-5xl font-extrabold text-white mb-5 leading-tight">
@@ -214,7 +211,6 @@ const Help = () => {
           to get the most out of CryptoView.
         </p>
 
-        {/* Quick links */}
         <div className="flex flex-wrap justify-center gap-3 mt-10">
           {faqCategories.map((cat, i) => (
             <button
@@ -232,9 +228,6 @@ const Help = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════
-          QUICK CARDS
-      ════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-6">
           {[
@@ -289,9 +282,6 @@ const Help = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════
-          STEP-BY-STEP GUIDES
-      ════════════════════════════════════════ */}
       <section className="bg-gray-50 py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <p className="text-xs font-bold text-blue-900 uppercase tracking-widest mb-2">Step-by-step</p>
@@ -339,9 +329,6 @@ const Help = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════
-          FAQ WITH CATEGORY TABS
-      ════════════════════════════════════════ */}
       <section id="faq-section" className="max-w-7xl mx-auto px-6 py-20">
         <p className="text-xs font-bold text-blue-900 uppercase tracking-widest mb-2">FAQ</p>
         <h2 className="text-4xl font-extrabold text-gray-900 mb-12">Frequently asked questions</h2>
@@ -399,9 +386,6 @@ const Help = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════
-          CONTACT
-      ════════════════════════════════════════ */}
       <section className="bg-gray-50 py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-bold text-blue-900 uppercase tracking-widest mb-2">Still need help?</p>
@@ -415,24 +399,11 @@ const Help = () => {
               {
                 title: "Email Support",
                 desc: "Send us an email and we'll respond within 24–48 hours with a detailed answer to your question.",
-                detail: "support@cryptoview.com",
+                detail: "mtanveerdev.33@gmail.com",
                 icon: (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2d6e" strokeWidth="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Help Documentation",
-                desc: "Browse our full documentation covering every feature, use case, and common question about CryptoView.",
-                detail: "docs.cryptoview.com",
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2d6e" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
                   </svg>
                 ),
               },
@@ -460,9 +431,6 @@ const Help = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════
-          FINAL CTA
-      ════════════════════════════════════════ */}
       <section className="bg-black py-24 px-6 text-center">
         <p className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-4">Ready to explore?</p>
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">

@@ -10,13 +10,24 @@ export const getCoins = () =>
       vs_currency: "usd",
       order: "market_cap_desc",
       per_page: 50,
+      price_change_percentage: "1h,24h,7d",
     },
   });
 
 export const getCoinDetails = (id) =>
-  API.get(`/coins/${id}`);
+  API.get(`/coins/${id}`, {
+    params: {
+      localization: false,
+      tickers: false,
+      community_data: false,
+      developer_data: false,
+    },
+  });
 
-export const getChart = (id) =>
+export const getChart = (id, days = 7) =>
   API.get(`/coins/${id}/market_chart`, {
-    params: { vs_currency: "usd", days: 7 },
+    params: {
+      vs_currency: "usd",
+      days,
+    },
   });
