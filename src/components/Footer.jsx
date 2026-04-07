@@ -20,12 +20,11 @@ const Footer = () => {
           <div className="flex flex-col gap-4">
             <div className="text-gray-800 font-bold text-2xl mb-2">Nav Links</div>
 
-            {/* Nav Links 2 lines */}
             <div className="grid grid-cols-2 gap-2 text-gray-700 font-medium">
               <Link to="/dashboard" className="hover:text-gray-900">Home</Link>
               <Link to="/trending" className="hover:text-gray-900">Trending</Link>
               <Link to="/about" className="hover:text-gray-900">About</Link>
-              <Link to="/cryptos" className="hover:text-gray-900">Cryptocurrencies</Link>
+              <Link to="/coin" className="hover:text-gray-900">Coins</Link>
               <Link to="/watchlist" className="hover:text-gray-900">Watchlist</Link>
               <Link to="/help" className="hover:text-gray-900">Help</Link>
             </div>

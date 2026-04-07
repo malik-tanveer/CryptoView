@@ -12,7 +12,7 @@ const faqCategories = [
     faqs: [
       {
         q: "What is CryptoView?",
-        a: "CryptoView is a free, open-access cryptocurrency tracking platform. It gives you live prices, interactive charts, trending coins, and a personal watchlist for over 2,400 cryptocurrencies — all powered by the CoinGecko API. No subscription required, no hidden costs, and no sign-up needed to browse.",
+        a: "CryptoView is a free, open-access cryptocurrency tracking platform. It gives you live prices, interactive charts, trending coins, and a personal watchlist for over 2,400 cryptocurrencies all powered by the CoinGecko API. No subscription required, no hidden costs, and no sign-up needed to browse.",
       },
       {
         q: "Do I need an account to use CryptoView?",
@@ -24,7 +24,7 @@ const faqCategories = [
       },
       {
         q: "Can I use CryptoView on my phone?",
-        a: "Yes! CryptoView is fully responsive and works on all screen sizes — mobile, tablet, and desktop. Simply open your browser, navigate to the site, and enjoy the full experience on any device.",
+        a: "Yes! CryptoView is fully responsive and works on all screen sizes mobile, tablet, and desktop. Simply open your browser, navigate to the site, and enjoy the full experience on any device.",
       },
     ],
   },
@@ -38,7 +38,7 @@ const faqCategories = [
     faqs: [
       {
         q: "Where does CryptoView get its data?",
-        a: "All market data — live prices, market caps, 24h trading volumes, price changes, and historical charts — is sourced from the CoinGecko API. CoinGecko is the world's largest independent crypto data aggregator, tracking 10,000+ coins across 600+ exchanges. It is one of the most trusted sources of cryptocurrency market data globally.",
+        a: "All market data live prices, market caps, 24h trading volumes, price changes, and historical charts is sourced from the CoinGecko API. CoinGecko is the world's largest independent crypto data aggregator, tracking 10,000+ coins across 600+ exchanges. It is one of the most trusted sources of cryptocurrency market data globally.",
       },
       {
         q: "How often do prices update?",
@@ -76,7 +76,7 @@ const faqCategories = [
       },
       {
         q: "What is market cap and why does it matter?",
-        a: "Market cap (market capitalization) is calculated by multiplying a coin's current price by its circulating supply. It represents the total value of all coins currently in circulation. Market cap is important because it gives a better picture of a coin's size and stability than price alone — a coin priced at $1 can have a higher market cap than one priced at $1,000 if enough coins are in circulation.",
+        a: "Market cap (market capitalization) is calculated by multiplying a coin's current price by its circulating supply. It represents the total value of all coins currently in circulation. Market cap is important because it gives a better picture of a coin's size and stability than price alone a coin priced at $1 can have a higher market cap than one priced at $1,000 if enough coins are in circulation.",
       },
     ],
   },
@@ -102,7 +102,7 @@ const faqCategories = [
       },
       {
         q: "Can I use the Watchlist without an account?",
-        a: "No — the Watchlist feature requires a free CryptoView account to save and sync your coins. However, signing up is free and takes under a minute. Once you have an account, your watchlist will always be there whenever you log back in.",
+        a: "No the Watchlist feature requires a free CryptoView account to save and sync your coins. However, signing up is free and takes under a minute. Once you have an account, your watchlist will always be there whenever you log back in.",
       },
     ],
   },
@@ -124,7 +124,7 @@ const faqCategories = [
       },
       {
         q: "Can I sign in with Google?",
-        a: "Yes! CryptoView supports Google Sign-In. On the Login or Sign Up page, click the 'Continue with Google' button. You will be redirected to Google's authentication flow, and once approved, you will be signed in to CryptoView instantly — no password needed.",
+        a: "Yes! CryptoView supports Google Sign-In. On the Login or Sign Up page, click the 'Continue with Google' button. You will be redirected to Google's authentication flow, and once approved, you will be signed in to CryptoView instantly no password needed.",
       },
       {
         q: "How do I delete my account?",
@@ -146,7 +146,7 @@ const faqCategories = [
       },
       {
         q: "How are trending coins determined?",
-        a: "Trending coins are determined by CoinGecko based on search volume, community activity, and price movement across their platform over the past 24 hours. CryptoView displays this data directly — we do not modify or filter the trending results in any way.",
+        a: "Trending coins are determined by CoinGecko based on search volume, community activity, and price movement across their platform over the past 24 hours. CryptoView displays this data directly we do not modify or filter the trending results in any way.",
       },
       {
         q: "How often does the Trending page update?",
@@ -438,7 +438,7 @@ const Help = () => {
           <span className="text-blue-400">already on CryptoView.</span>
         </h2>
         <p className="text-gray-400 text-base max-w-lg mx-auto leading-relaxed mb-12">
-          Real-time prices, interactive charts, trending coins, and a personal watchlist —
+          Real-time prices, interactive charts, trending coins, and a personal watchlist
           all free, all in one place. Start exploring now.
         </p>
         <div className="flex flex-wrap justify-center gap-4">

@@ -333,7 +333,7 @@ const Home = () => {
           {!search && (
             <div className="mt-4 text-center">
               <Link
-                to="/cryptos"
+                to="/coin"
                 className="text-sm font-bold text-blue-900 hover:underline"
               >
                 View all 2,400+ coins →
@@ -372,7 +372,7 @@ const Home = () => {
                   Go to any coin's detail page and click the star to add it here.
                 </p>
                 <Link
-                  to="/cryptos"
+                  to="/coin"
                   className="text-xs font-bold text-blue-900 hover:underline"
                 >
                   Browse coins →
@@ -476,7 +476,7 @@ const Home = () => {
               <h2 className="text-lg font-extrabold text-gray-900">Top 10 by Market Cap</h2>
               <p className="text-xs text-gray-400 mt-0.5">Largest cryptocurrencies ranked by market capitalization</p>
             </div>
-            <Link to="/cryptos" className="text-xs font-bold text-blue-900 hover:underline">
+            <Link to="/coin" className="text-xs font-bold text-blue-900 hover:underline">
               View all →
             </Link>
           </div>

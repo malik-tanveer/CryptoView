@@ -19,8 +19,8 @@ const Navbar = () => {
   const { currentUser, logout } = useAuth();
 
   return (
-    <nav className="w-full bg-white border-b shadow-sm fixed top-0">
-      {/* TOP BAR */}
+<nav className="w-full bg-white border-b shadow-sm fixed top-0 left-0 right-0 h-16">
+        {/* TOP BAR */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
           <Link to="/dashboard" className="nav-link">Home</Link>
           <Link to="/about" className="nav-link">About</Link>
-          <Link to="/cryptos" className="nav-link">Cryptocurrencies</Link>
+          <Link to="/coin" className="nav-link">Coins</Link>
           <Link to="/trending" className="nav-link">Trending</Link>
           <Link to="/watchlist" className="nav-link">Watchlist</Link>
           <Link to="/help" className="nav-link">Help</Link>
@@ -60,7 +60,6 @@ const Navbar = () => {
     {(currentUser.displayName || currentUser.email).charAt(0).toUpperCase()}
   </div>
 
-  {/* Name */}
   <div className="flex flex-col leading-tight">
     <span className="text-xs text-gray-500">Welcome back</span>
     <span className="text-sm font-semibold text-gray-800">
@@ -78,7 +77,6 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Button */}
         <button
           className="md:hidden"
           onClick={() => setMenuOpen(true)}
@@ -87,7 +85,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Overlay */}
       {menuOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-40"
@@ -95,12 +92,10 @@ const Navbar = () => {
         />
       )}
 
-      {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full w-72 bg-white shadow-lg z-50 transform transition-transform duration-300 
         ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
           <img src="/logo2.png" className="w-12 h-12" />
           <button onClick={() => setMenuOpen(false)}>
@@ -112,7 +107,7 @@ const Navbar = () => {
         <div className="flex flex-col gap-5 p-5 text-gray-700 font-medium">
           <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="flex gap-3"><Home size={18}/> Home</Link>
           <Link to="/about" onClick={() => setMenuOpen(false)} className="flex gap-3"><Info size={18}/> About</Link>
-          <Link to="/cryptos" onClick={() => setMenuOpen(false)} className="flex gap-3"><BarChart3 size={18}/> Cryptos</Link>
+          <Link to="/coin" onClick={() => setMenuOpen(false)} className="flex gap-3"><BarChart3 size={18}/> Coins</Link>
           <Link to="/trending" onClick={() => setMenuOpen(false)} className="flex gap-3"><TrendingUp size={18}/> Trending</Link>
           <Link to="/watchlist" onClick={() => setMenuOpen(false)} className="flex gap-3"><Star size={18}/> Watchlist</Link>
           <Link to="/help" onClick={() => setMenuOpen(false)} className="flex gap-3"><HelpCircle size={18}/> Help</Link>

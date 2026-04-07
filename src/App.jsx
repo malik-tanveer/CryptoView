@@ -4,7 +4,7 @@ import About from "./pages/About";
 import Help from "./pages/Help";
 import Trending from "./pages/Trending";
 import Watchlist from "./pages/Watchlist";
-import Cryptos from "./pages/Cryptos";
+import Coin from "./pages/coin";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Start from "./pages/Start";
@@ -23,7 +23,8 @@ function App() {
   return (
     <AuthProvider>
       {!hideNavFooter && <Navbar />}
-      <Routes>
+      <div className="mt-16">
+      <Routes >
         {/* Public Routes */}
 
         <Route path="/" element={<Start />} />
@@ -65,10 +66,10 @@ function App() {
           }
         />
         <Route
-          path="/cryptos"
+          path="/coin"
           element={
             <ProtectedRoute>
-              <Cryptos />
+              <Coin />
             </ProtectedRoute>
           }
         />
@@ -89,6 +90,7 @@ function App() {
           }
         />
       </Routes>
+      </div>
       {!hideNavFooter && <Footer />}
       </AuthProvider>
   );

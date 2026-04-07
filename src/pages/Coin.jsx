@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { getCoins } from "../services/api";
 
-// ─── HELPERS ─────────────────────────────────────────────────
 const fmt = (n) =>
   n >= 1e12
     ? `$${(n / 1e12).toFixed(2)}T`
@@ -35,7 +34,6 @@ const SkeletonRow = () => (
   </div>
 );
 
-// ─── COIN ROW ─────────────────────────────────────────────────
 const CoinRow = ({ coin, rank }) => {
   const up = coin.price_change_percentage_24h >= 0;
   const isNeutral = coin.price_change_percentage_24h == null;
@@ -118,8 +116,7 @@ const CoinRow = ({ coin, rank }) => {
   );
 };
 
-// ─── MAIN ─────────────────────────────────────────────────────
-const Cryptos = () => {
+const Coin = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -130,7 +127,6 @@ const Cryptos = () => {
   const [priceRange, setPriceRange] = useState("all");
   const [changeFilter, setChangeFilter] = useState("all");
 
-  // ── Fetch ─────────────────────────────────────────────────
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -528,4 +524,4 @@ const Cryptos = () => {
   );
 };
 
-export default Cryptos;
+export default Coin;
