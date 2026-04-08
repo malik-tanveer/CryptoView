@@ -132,7 +132,7 @@ const About = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link
-            to="/cryptos"
+            to="/coin"
             className="px-8 py-3.5 bg-white text-blue-900 font-bold rounded-xl text-sm hover:bg-blue-50 transition"
           >
             Explore Coins →
@@ -348,13 +348,13 @@ const About = () => {
             {
               title: "Browse 2,400+ Cryptocurrencies",
               desc: "The Cryptos page lists every tracked coin with live prices, market caps, 24h change percentages, and a direct link to each coin's detail page. Sort and search to find exactly what you need.",
-              link: "/cryptos",
+              link: "/coin",
               linkText: "Go to Cryptos →",
             },
             {
               title: "View Interactive Price Charts",
               desc: "Every coin has a dedicated detail page with a full interactive price history chart. Toggle between 1 day, 1 week, 1 month, and 1 year views to analyze trends and performance over time.",
-              link: "/cryptos",
+              link: "/coin",
               linkText: "Explore a Coin →",
             },
             {
@@ -400,7 +400,7 @@ const About = () => {
         <div className="flex flex-wrap justify-center gap-4">
           
           <Link
-            to="/cryptos"
+            to="/coin"
             className="px-10 py-4 border border-white/20 text-white font-bold rounded-xl text-sm hover:bg-white/10 transition"
           >
             Browse coins without signing up

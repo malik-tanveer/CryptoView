@@ -90,10 +90,6 @@ const Trending = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
-
-      {/* ════════════════════════════════════════
-          HERO
-      ════════════════════════════════════════ */}
       <div className="bg-blue-900 px-6 py-12">
         <div className="max-w-6xl mx-auto">
           <p className="text-xs font-bold text-blue-300 uppercase tracking-widest mb-2">
@@ -103,7 +99,7 @@ const Trending = () => {
             Trending Cryptocurrencies
           </h1>
           <p className="text-blue-200 text-base max-w-xl leading-relaxed">
-            Discover the hottest coins right now — most searched on CoinGecko, biggest 24h gainers,
+            Discover the hottest coins right now most searched on CoinGecko, biggest 24h gainers,
             and the steepest losers. Updated continuously.
           </p>
 
@@ -111,17 +107,13 @@ const Trending = () => {
           <div className="flex items-center gap-2 mt-5">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             <span className="text-xs text-blue-200 font-medium">
-              Live data — CoinGecko API
+              Live data CoinGecko API
             </span>
           </div>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 space-y-6">
-
-        {/* ════════════════════════════════════════
-            TABS
-        ════════════════════════════════════════ */}
         <div className="bg-white border border-gray-200 rounded-2xl p-1.5 flex gap-1">
           {tabs.map((tab) => (
             <button
@@ -138,9 +130,6 @@ const Trending = () => {
           ))}
         </div>
 
-        {/* ════════════════════════════════════════
-            TRENDING COINS (CoinGecko search trending)
-        ════════════════════════════════════════ */}
         {activeTab === "trending" && (
           <>
             <div className="flex items-center justify-between">
@@ -182,7 +171,7 @@ const Trending = () => {
                   : trending.map((item, i) => {
                       const coin = item.item;
                       const priceUsd = coin.data?.price
-                        ? parseFloat(coin.data.price.replace(/[^0-9.]/g, ""))
+? parseFloat(String(coin.data.price).replace(/[^0-9.]/g, ""))
                         : null;
                       const change = coin.data?.price_change_percentage_24h?.usd;
                       const isUp = (change || 0) >= 0;
@@ -256,13 +245,10 @@ const Trending = () => {
           </>
         )}
 
-        {/* ════════════════════════════════════════
-            TOP GAINERS
-        ════════════════════════════════════════ */}
         {activeTab === "gainers" && (
           <>
             <div>
-              <h2 className="text-xl font-extrabold text-gray-900">Top Gainers — Last 24 Hours</h2>
+              <h2 className="text-xl font-extrabold text-gray-900">Top Gainers Last 24 Hours</h2>
               <p className="text-xs text-gray-400 mt-1">
                 Coins with the highest price increase in the last 24 hours
               </p>
@@ -325,13 +311,10 @@ const Trending = () => {
           </>
         )}
 
-        {/* ════════════════════════════════════════
-            TOP LOSERS
-        ════════════════════════════════════════ */}
         {activeTab === "losers" && (
           <>
             <div>
-              <h2 className="text-xl font-extrabold text-gray-900">Top Losers — Last 24 Hours</h2>
+              <h2 className="text-xl font-extrabold text-gray-900">Top Losers Last 24 Hours</h2>
               <p className="text-xs text-gray-400 mt-1">
                 Coins with the steepest price drop in the last 24 hours
               </p>
@@ -395,9 +378,6 @@ const Trending = () => {
           </>
         )}
 
-        {/* ════════════════════════════════════════
-            BOTTOM CTA
-        ════════════════════════════════════════ */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-gray-200 rounded-2xl px-6 py-5">
           <div>
             <p className="text-sm font-bold text-gray-900">Want to track these coins?</p>

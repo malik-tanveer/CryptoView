@@ -15,15 +15,14 @@ import {
 const fmt = (n) => {
   if (n == null) return "—";
   if (n >= 1e12) return `$${(n / 1e12).toFixed(2)}T`;
-  if (n >= 1e9)  return `$${(n / 1e9).toFixed(2)}B`;
-  if (n >= 1e6)  return `$${(n / 1e6).toFixed(2)}M`;
+  if (n >= 1e9) return `$${(n / 1e9).toFixed(2)}B`;
+  if (n >= 1e6) return `$${(n / 1e6).toFixed(2)}M`;
   return `$${n.toLocaleString()}`;
 };
 
 const pct = (n) =>
   n == null ? "—" : n >= 0 ? `+${n.toFixed(2)}%` : `${n.toFixed(2)}%`;
 
-// ─── SKELETON ────────────────────────────────────────────────
 const SkeletonRow = () => (
   <div className="grid grid-cols-12 gap-4 px-5 py-4 items-center border-b border-gray-100 animate-pulse">
     <div className="col-span-1 h-3 bg-gray-100 rounded" />
@@ -44,23 +43,21 @@ const SkeletonRow = () => (
 const Watchlist = () => {
   const { currentUser } = useAuth();
 
-  const [allCoins, setAllCoins]         = useState([]);
+  const [allCoins, setAllCoins] = useState([]);
   const [watchlistDocs, setWatchlistDocs] = useState([]); // {id, coinId}
-  const [loading, setLoading]           = useState(true);
-  const [removing, setRemoving]         = useState(null);
-  const [search, setSearch]             = useState("");
-  const [sortBy, setSortBy]             = useState("market_cap");
-  const [sortDir, setSortDir]           = useState("desc");
+  const [loading, setLoading] = useState(true);
+  const [removing, setRemoving] = useState(null);
+  const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("market_cap");
+  const [sortDir, setSortDir] = useState("desc");
 
-  // ── Fetch all market coins ────────────────────────────────
   useEffect(() => {
     getCoins()
       .then((res) => setAllCoins(res.data))
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false));
   }, []);
 
-  // ── Firestore real-time watchlist listener ────────────────
   useEffect(() => {
     if (!currentUser) return;
     const q = query(
@@ -73,7 +70,6 @@ const Watchlist = () => {
     return () => unsub();
   }, [currentUser]);
 
-  // ── Remove from watchlist ─────────────────────────────────
   const removeFromWatchlist = async (docId) => {
     setRemoving(docId);
     try {
@@ -84,7 +80,6 @@ const Watchlist = () => {
     setRemoving(null);
   };
 
-  // ── Merge: watchlist coins with market data ───────────────
   const watchlistCoinIds = watchlistDocs.map((d) => d.coinId);
   let watchlistCoins = allCoins
     .filter((c) => watchlistCoinIds.includes(c.id))
@@ -93,7 +88,6 @@ const Watchlist = () => {
       docId: watchlistDocs.find((d) => d.coinId === c.id)?.id,
     }));
 
-  // search
   if (search.trim()) {
     const q = search.toLowerCase();
     watchlistCoins = watchlistCoins.filter(
@@ -103,10 +97,9 @@ const Watchlist = () => {
     );
   }
 
-  // sort
   watchlistCoins.sort((a, b) => {
     let aVal, bVal;
-    if (sortBy === "price")  { aVal = a.current_price; bVal = b.current_price; }
+    if (sortBy === "price") { aVal = a.current_price; bVal = b.current_price; }
     else if (sortBy === "change") { aVal = a.price_change_percentage_24h || 0; bVal = b.price_change_percentage_24h || 0; }
     else { aVal = a.market_cap; bVal = b.market_cap; }
     return sortDir === "desc" ? bVal - aVal : aVal - bVal;
@@ -114,7 +107,7 @@ const Watchlist = () => {
 
   const totalValue = watchlistCoins.reduce((sum, c) => sum + (c.market_cap || 0), 0);
   const gainers = watchlistCoins.filter((c) => c.price_change_percentage_24h > 0).length;
-  const losers  = watchlistCoins.filter((c) => c.price_change_percentage_24h < 0).length;
+  const losers = watchlistCoins.filter((c) => c.price_change_percentage_24h < 0).length;
 
   const handleSort = (col) => {
     if (sortBy === col) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
@@ -132,9 +125,6 @@ const Watchlist = () => {
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
 
-      {/* ════════════════════════════════════════
-          HERO
-      ════════════════════════════════════════ */}
       <div className="bg-blue-900 px-6 py-12">
         <div className="max-w-6xl mx-auto">
           <p className="text-xs font-bold text-blue-300 uppercase tracking-widest mb-2">My Portfolio</p>
@@ -168,10 +158,6 @@ const Watchlist = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 space-y-6">
-
-        {/* ════════════════════════════════════════
-            EMPTY STATE
-        ════════════════════════════════════════ */}
         {!loading && watchlistDocs.length === 0 && (
           <div className="bg-white border border-gray-200 rounded-2xl py-24 text-center">
             <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
@@ -201,9 +187,6 @@ const Watchlist = () => {
           </div>
         )}
 
-        {/* ════════════════════════════════════════
-            SEARCH + SORT (only if has coins)
-        ════════════════════════════════════════ */}
         {(loading || watchlistDocs.length > 0) && (
           <div className="bg-white border border-gray-200 rounded-2xl p-4">
             <div className="flex flex-col sm:flex-row gap-3">
@@ -251,9 +234,6 @@ const Watchlist = () => {
           </div>
         )}
 
-        {/* ════════════════════════════════════════
-            WATCHLIST TABLE
-        ════════════════════════════════════════ */}
         {(loading || watchlistDocs.length > 0) && (
           <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
 
@@ -356,9 +336,6 @@ const Watchlist = () => {
           </div>
         )}
 
-        {/* ════════════════════════════════════════
-            FOOTER CTA
-        ════════════════════════════════════════ */}
         {!loading && watchlistDocs.length > 0 && (
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-gray-200 rounded-2xl px-6 py-5">
             <div>

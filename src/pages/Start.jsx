@@ -180,7 +180,7 @@ const Start = () => {
               Go to Dashboard →
             </Link>
             <Link
-              to="/cryptos"
+              to="/coin"
               className="px-8 py-3.5 border border-gray-200 text-gray-700 rounded-xl font-semibold hover:border-blue-900 hover:text-blue-900 transition text-sm"
             >
               Explore All Coins
@@ -256,7 +256,7 @@ const Start = () => {
               Real prices pulled live from CoinGecko. Click any coin to see its full chart, stats, and history.
             </p>
           </div>
-          <Link to="/cryptos" className="text-sm font-semibold text-blue-900 hover:underline whitespace-nowrap">
+          <Link to="/coin" className="text-sm font-semibold text-blue-900 hover:underline whitespace-nowrap">
             View all 2400+ coins →
           </Link>
         </div>
@@ -278,7 +278,7 @@ const Start = () => {
 
         <div className="text-center mt-8">
           <Link
-            to="/cryptos"
+            to="/coin"
             className="inline-block px-10 py-3.5 bg-black text-white rounded-xl text-sm font-bold hover:bg-blue-900 transition shadow"
           >
             Explore all coins with charts & data →
@@ -532,7 +532,7 @@ const Start = () => {
             Create your free account
           </Link>
           <Link
-            to="/cryptos"
+            to="/coin"
             className="px-10 py-4 border border-white/20 text-white font-bold rounded-xl text-sm hover:bg-white/10 transition"
           >
             Browse coins without signing up

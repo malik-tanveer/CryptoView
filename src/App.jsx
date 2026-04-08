@@ -4,7 +4,7 @@ import About from "./pages/About";
 import Help from "./pages/Help";
 import Trending from "./pages/Trending";
 import Watchlist from "./pages/Watchlist";
-import Coin from "./pages/coin";
+import Coin from "./pages/Coin";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Start from "./pages/Start";
