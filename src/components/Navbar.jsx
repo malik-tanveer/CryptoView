@@ -1,152 +1,183 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
-  Menu,
-  X,
-  Home,
-  Info,
-  BarChart3,
-  TrendingUp,
-  Star,
-  HelpCircle,
-  LogIn,
-  UserPlus,
+  Menu, X, Home, Info, BarChart3,
+  TrendingUp, Star, HelpCircle, LogIn, UserPlus, LogOut,
 } from "lucide-react";
 
-const Navbar = () => {
+const NAV_LINKS = [
+  { to: "/dashboard", label: "Home",      icon: Home      },
+  { to: "/about",     label: "About",     icon: Info      },
+  { to: "/coin",      label: "Coins",     icon: BarChart3 },
+  { to: "/trending",  label: "Trending",  icon: TrendingUp},
+  { to: "/watchlist", label: "Watchlist", icon: Star      },
+  { to: "/help",      label: "Help",      icon: HelpCircle},
+];
+
+export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { currentUser, logout } = useAuth();
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
-<nav className="w-full bg-white border-b shadow-sm fixed top-0 left-0 right-0 h-16">
-        {/* TOP BAR */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <img src="/logo2.png" alt="logo" className="w-14 h-14" />
-        </Link>
+    <>
+      <nav className="w-full bg-white border-b border-gray-100 shadow-sm fixed top-0 left-0 right-0 z-30 h-16">
+        <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-4 md:px-6">
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-          <Link to="/dashboard" className="nav-link">Home</Link>
-          <Link to="/about" className="nav-link">About</Link>
-          <Link to="/coin" className="nav-link">Coins</Link>
-          <Link to="/trending" className="nav-link">Trending</Link>
-          <Link to="/watchlist" className="nav-link">Watchlist</Link>
-          <Link to="/help" className="nav-link">Help</Link>
-        </div>
+          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
+            <img src="/logo2.png" alt="CryptoView" className="w-10 h-10 object-contain" />
+            <span className="text-base font-extrabold text-blue-900 hidden sm:block">CryptoView</span>
+          </Link>
 
-        {/* Desktop Auth */}
-        <div className="hidden md:flex items-center gap-3">
-          {!currentUser ? (
-            <>
-              <Link to="/login">
-                <button className="px-4 py-1.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100">
-                  <LogIn size={16} className="inline mr-1" /> Login
-                </button>
-              </Link>
-              <Link to="/signup">
-                <button className="px-4 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-700">
-                  <UserPlus size={16} className="inline mr-1" /> Sign Up
-                </button>
-              </Link>
-            </>
-          ) : (
-            <>
-              <div className="flex items-center gap-3 bg-gray-100 px-3 py-1.5 rounded-full">
-  {/* Avatar */}
-  <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-900 text-white text-sm font-semibold">
-    {(currentUser.displayName || currentUser.email).charAt(0).toUpperCase()}
-  </div>
-
-  <div className="flex flex-col leading-tight">
-    <span className="text-xs text-gray-500">Welcome back</span>
-    <span className="text-sm font-semibold text-gray-800">
-      {currentUser.displayName || currentUser.email}
-    </span>
-  </div>
-</div>
-              <button
-                onClick={logout}
-                className="px-4 py-1.5 bg-red-500 text-white rounded-lg hover:bg-red-400"
+          <div className="hidden md:flex items-center gap-1">
+            {NAV_LINKS.map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors ${
+                  isActive(to)
+                    ? "bg-blue-50 text-blue-900"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                }`}
               >
-                Logout
-              </button>
-            </>
-          )}
-        </div>
+                {label}
+              </Link>
+            ))}
+          </div>
 
-        <button
-          className="md:hidden"
-          onClick={() => setMenuOpen(true)}
-        >
-          <Menu size={28} />
-        </button>
-      </div>
-
-      {menuOpen && (
-        <div
-          className="fixed inset-0 bg-black/30 z-40"
-          onClick={() => setMenuOpen(false)}
-        />
-      )}
-
-      <div
-        className={`fixed top-0 left-0 h-full w-72 bg-white shadow-lg z-50 transform transition-transform duration-300 
-        ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
-      >
-        <div className="flex items-center justify-between p-4 border-b">
-          <img src="/logo2.png" className="w-12 h-12" />
-          <button onClick={() => setMenuOpen(false)}>
-            <X />
-          </button>
-        </div>
-
-        {/* Links */}
-        <div className="flex flex-col gap-5 p-5 text-gray-700 font-medium">
-          <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="flex gap-3"><Home size={18}/> Home</Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)} className="flex gap-3"><Info size={18}/> About</Link>
-          <Link to="/coin" onClick={() => setMenuOpen(false)} className="flex gap-3"><BarChart3 size={18}/> Coins</Link>
-          <Link to="/trending" onClick={() => setMenuOpen(false)} className="flex gap-3"><TrendingUp size={18}/> Trending</Link>
-          <Link to="/watchlist" onClick={() => setMenuOpen(false)} className="flex gap-3"><Star size={18}/> Watchlist</Link>
-          <Link to="/help" onClick={() => setMenuOpen(false)} className="flex gap-3"><HelpCircle size={18}/> Help</Link>
-
-          {/* Auth */}
-          <div className="mt-6 flex flex-col gap-3">
+          <div className="hidden md:flex items-center gap-2.5 flex-shrink-0">
             {!currentUser ? (
               <>
-                <Link to="/login" onClick={() => setMenuOpen(false)}>
-                  <button className="w-full border py-2 rounded-lg flex items-center justify-center gap-2">
-                    <LogIn size={16}/> Login
+                <Link to="/login">
+                  <button className="flex items-center gap-1.5 px-4 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-gray-700 hover:border-gray-400 hover:bg-gray-50 transition">
+                    <LogIn size={14} /> Login
                   </button>
                 </Link>
-                <Link to="/signup" onClick={() => setMenuOpen(false)}>
-                  <button className="w-full bg-gray-900 text-white py-2 rounded-lg flex items-center justify-center gap-2">
-                    <UserPlus size={16}/> Sign Up
+                <Link to="/signup">
+                  <button className="flex items-center gap-1.5 px-4 py-2 bg-blue-900 text-white rounded-xl text-sm font-semibold hover:bg-black transition">
+                    <UserPlus size={14} /> Sign Up
                   </button>
                 </Link>
               </>
             ) : (
               <>
-                <span className="text-center text-sm">
-                  {currentUser.displayName || currentUser.email}
-                </span>
+                {/* User pill */}
+                <div className="flex items-center gap-2.5 bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-xl">
+                  <div className="w-7 h-7 flex items-center justify-center rounded-full bg-blue-900 text-white text-xs font-bold flex-shrink-0">
+                    {(currentUser.displayName || currentUser.email).charAt(0).toUpperCase()}
+                  </div>
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-[10px] text-gray-400 font-medium">Welcome back</span>
+                    <span className="text-xs font-bold text-gray-800 max-w-[120px] truncate">
+                      {currentUser.displayName || currentUser.email}
+                    </span>
+                  </div>
+                </div>
                 <button
-                  onClick={() => {
-                    logout();
-                    setMenuOpen(false);
-                  }}
-                  className="w-full bg-red-500 text-white py-2 rounded-lg"
+                  onClick={logout}
+                  className="flex items-center gap-1.5 px-3.5 py-2 bg-red-50 text-red-600 border border-red-100 rounded-xl text-sm font-semibold hover:bg-red-500 hover:text-white hover:border-red-500 transition"
                 >
-                  Logout
+                  <LogOut size={14} /> Logout
                 </button>
               </>
             )}
           </div>
+
+          <button
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 transition"
+            onClick={() => setMenuOpen(true)}
+          >
+            <Menu size={20} />
+          </button>
+        </div>
+      </nav>
+
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
+      <div className={`fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${
+        menuOpen ? "translate-x-0" : "-translate-x-full"
+      }`}>
+        {/* Sidebar header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+          <div className="flex items-center gap-2.5">
+            <img src="/logo2.png" alt="CryptoView" className="w-9 h-9 object-contain" />
+            <span className="text-base font-extrabold text-blue-900">CryptoView</span>
+          </div>
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 transition"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* Nav links */}
+        <div className="flex flex-col gap-1 p-4">
+          {NAV_LINKS.map(({ to, label, icon: Icon }) => (
+            <Link
+              key={to}
+              to={to}
+              onClick={() => setMenuOpen(false)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                isActive(to)
+                  ? "bg-blue-900 text-white"
+                  : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              }`}
+            >
+              <Icon size={17} /> {label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Auth section */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-100 bg-white">
+          {!currentUser ? (
+            <div className="flex flex-col gap-2">
+              <Link to="/login" onClick={() => setMenuOpen(false)}>
+                <button className="w-full flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">
+                  <LogIn size={15} /> Login
+                </button>
+              </Link>
+              <Link to="/signup" onClick={() => setMenuOpen(false)}>
+                <button className="w-full flex items-center justify-center gap-2 py-2.5 bg-blue-900 text-white rounded-xl text-sm font-semibold hover:bg-black transition">
+                  <UserPlus size={15} /> Sign Up
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
+                <div className="w-8 h-8 rounded-full bg-blue-900 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+                  {(currentUser.displayName || currentUser.email).charAt(0).toUpperCase()}
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] text-gray-400">Logged in as</span>
+                  <span className="text-xs font-bold text-gray-800 truncate">
+                    {currentUser.displayName || currentUser.email}
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => { logout(); setMenuOpen(false); }}
+                className="w-full flex items-center justify-center gap-2 py-2.5 bg-red-500 text-white rounded-xl text-sm font-semibold hover:bg-red-600 transition"
+              >
+                <LogOut size={15} /> Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
-    </nav>
+
+      <div className="h-16" />
+    </>
   );
 };
 
